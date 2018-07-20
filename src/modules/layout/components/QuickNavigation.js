@@ -66,17 +66,6 @@ const QuickNavigation = ({ logout }, context) => {
             </li>
 
             <ModalTrigger
-              title="Change Password"
-              trigger={
-                <li>
-                  <a>{__('Change Password')}</a>
-                </li>
-              }
-            >
-              <ChangePassword />
-            </ModalTrigger>
-
-            <ModalTrigger
               title="Email signatures"
               trigger={
                 <li>
