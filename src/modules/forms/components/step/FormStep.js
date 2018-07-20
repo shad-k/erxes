@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import { ActionBar } from 'modules/layout/components';
 import {
   FormGroup,
   FormControl,
@@ -8,18 +8,8 @@ import {
   ControlLabel
 } from 'modules/common/components';
 import { FormPreview } from './preview';
-import { colors } from 'modules/common/styles';
-import { FlexItem, FlexColumn, LeftItem, Footer, Preview } from './style';
-
-const Fields = styled.ul`
-  list-style: none;
-  padding: 0;
-
-  button {
-    color: ${colors.colorSecondary};
-    font-weight: 500;
-  }
-`;
+import { LeftItem, Preview } from 'modules/common/components/step/styles';
+import { FlexItem, FlexColumn } from './style';
 
 const propTypes = {
   type: PropTypes.string,
@@ -159,18 +149,23 @@ class FormStep extends Component {
     const { __ } = this.context;
 
     return (
-      <Footer>
-        <FormControl
-          checked={this.state.editingField.isRequired || false}
-          id="isRequired"
-          componentClass="checkbox"
-          onChange={e => this.onChangeFunction('isRequired', e.target.checked)}
-        >
-          {__('This item is required')}
-        </FormControl>
-
-        {this.renderButtons()}
-      </Footer>
+      <ActionBar
+        right={
+          <Fragment>
+            <FormControl
+              checked={this.state.editingField.isRequired || false}
+              id="isRequired"
+              componentClass="checkbox"
+              onChange={e =>
+                this.onChangeFunction('isRequired', e.target.checked)
+              }
+            >
+              {__('This item is required')}
+            </FormControl>
+            &emsp; {this.renderButtons()}
+          </Fragment>
+        }
+      />
     );
   }
 
@@ -206,9 +201,9 @@ class FormStep extends Component {
     const { __ } = this.context;
 
     return (
-      <Fields>
+      <Fragment>
         <FormGroup>
-          <ControlLabel>Form title</ControlLabel>
+          <ControlLabel>{__('Form title')}</ControlLabel>
           <FormControl
             id="form-btn-text"
             value={this.props.formTitle}
@@ -217,7 +212,7 @@ class FormStep extends Component {
         </FormGroup>
 
         <FormGroup>
-          <ControlLabel>Form description</ControlLabel>
+          <ControlLabel>{__('Form description')}</ControlLabel>
           <FormControl
             id="form-btn-text"
             value={this.props.formDesc}
@@ -285,14 +280,14 @@ class FormStep extends Component {
         {this.renderOptionsTextArea()}
 
         <FormGroup>
-          <ControlLabel>Form button text</ControlLabel>
+          <ControlLabel>{__('Form button text')}</ControlLabel>
           <FormControl
             id="form-btn-text"
             value={this.props.formBtnText}
             onChange={e => this.onChangeState('formBtnText', e.target.value)}
           />
         </FormGroup>
-      </Fields>
+      </Fragment>
     );
   }
 

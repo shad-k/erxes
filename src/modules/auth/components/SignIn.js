@@ -78,10 +78,7 @@ class SignIn extends Component {
               />
             </InputGroup>
           </FormGroup>
-          <Links>
-            <Link to="/forgot-password">Forgot password?</Link>
-          </Links>
-          <Button type="submit" block>
+          <Button btnStyle="success" type="submit" block>
             Sign in
           </Button>
         </form>

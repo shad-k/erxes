@@ -58,10 +58,7 @@ class ForgotPassword extends Component {
               />
             </InputGroup>
           </FormGroup>
-          <Links>
-            <Link to="/sign-in">Sign in</Link>
-          </Links>
-          <Button type="submit" block>
+          <Button btnStyle="success" type="submit" block>
             Email me the instruction
           </Button>
         </form>

@@ -50,7 +50,7 @@ class ResetPassword extends Component {
               />
             </InputGroup>
           </FormGroup>
-          <Button type="submit" block>
+          <Button btnStyle="success" type="submit" block>
             Change password
           </Button>
         </form>

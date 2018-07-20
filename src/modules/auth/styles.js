@@ -15,7 +15,7 @@ const AuthBox = styled.div`
     text-align: left;
   }
   h2 {
-    color: #6b60a6;
+    color: ${colors.colorPrimary};
     font-size: 30px;
     font-weight: 400;
     margin: 0 0 50px;

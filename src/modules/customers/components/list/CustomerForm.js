@@ -32,6 +32,7 @@ const contextTypes = {
 class CustomerForm extends React.Component {
   constructor(props) {
     super(props);
+
     const { customer = {} } = props;
 
     this.state = {
@@ -47,7 +48,7 @@ class CustomerForm extends React.Component {
   }
 
   componentDidMount() {
-    const { customer } = this.props;
+    const { customer = {} } = this.props;
 
     if (customer.ownerId)
       this.handleUserSearch(customer.owner.details.fullName);
@@ -138,7 +139,7 @@ class CustomerForm extends React.Component {
               id: 'customer-email',
               type: 'email',
               defaultValue:
-                customer.email || this.getVisitorInfo(customer, 'email') || '-',
+                customer.email || this.getVisitorInfo(customer, 'email') || '',
               required: true
             })}
 
@@ -186,7 +187,7 @@ class CustomerForm extends React.Component {
             {this.renderFormGroup('Phone', {
               id: 'customer-phone',
               defaultValue:
-                customer.phone || this.getVisitorInfo(customer, 'phone') || '-'
+                customer.phone || this.getVisitorInfo(customer, 'phone') || ''
             })}
 
             {this.renderFormGroup('Position', {
