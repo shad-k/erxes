@@ -21,6 +21,7 @@ class CompanyChooser extends React.Component {
       if (!loadmore) {
         this.setState({ perPage: 0 });
       }
+
       this.setState({ perPage: this.state.perPage + 20 }, () => {
         companiesQuery.refetch({
           searchValue: value,
@@ -53,7 +54,7 @@ class CompanyChooser extends React.Component {
     const form = <CompanyForm action={addCompany} />;
 
     const renderName = data => {
-      return data.name || data.website || 'N/A';
+      return data.primaryName || data.website || 'N/A';
     };
 
     const updatedProps = {
