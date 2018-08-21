@@ -4,6 +4,7 @@ import { compose, graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { Alert, confirm } from 'modules/common/utils';
 import { List } from '../components';
+import { queries, mutations } from '../graphql';
 
 const ListContainer = props => {
   const { tagsQuery, addMutation, editMutation, removeMutation, type } = props;
@@ -59,59 +60,24 @@ ListContainer.propTypes = {
   removeMutation: PropTypes.func
 };
 
-export default compose(
-  graphql(
-    gql`
-      query tagsQuery($type: String) {
-        tags(type: $type) {
-          _id
-          name
-          type
-          colorCode
-          createdAt
-          objectCount
-        }
-      }
-    `,
+const options = ({ type }) => ({
+  refetchQueries: [
     {
-      name: 'tagsQuery',
-      options: ({ type }) => ({
-        variables: { type },
-        fetchPolicy: 'network-only'
-      })
+      query: gql(queries.tags),
+      variables: { type }
     }
-  ),
-  graphql(
-    gql`
-      mutation tagsAdd($name: String!, $type: String!, $colorCode: String) {
-        tagsAdd(name: $name, type: $type, colorCode: $colorCode) {
-          _id
-        }
-      }
-    `,
-    { name: 'addMutation' }
-  ),
-  graphql(
-    gql`
-      mutation tagsEdit(
-        $_id: String!
-        $name: String!
-        $type: String!
-        $colorCode: String
-      ) {
-        tagsEdit(_id: $_id, name: $name, type: $type, colorCode: $colorCode) {
-          _id
-        }
-      }
-    `,
-    { name: 'editMutation' }
-  ),
-  graphql(
-    gql`
-      mutation tagsRemove($ids: [String!]!) {
-        tagsRemove(ids: $ids)
-      }
-    `,
-    { name: 'removeMutation' }
-  )
+  ]
+});
+
+export default compose(
+  graphql(gql(queries.tags), {
+    name: 'tagsQuery',
+    options: ({ type }) => ({
+      variables: { type },
+      fetchPolicy: 'network-only'
+    })
+  }),
+  graphql(gql(mutations.add), { name: 'addMutation', options }),
+  graphql(gql(mutations.edit), { name: 'editMutation', options }),
+  graphql(gql(mutations.remove), { name: 'removeMutation', options })
 )(ListContainer);

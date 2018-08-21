@@ -1,9 +1,9 @@
 const commonFields = `
   $names: [String],
+  $avatar: String,
   $primaryName: String,
   $size: Int,
   $industry: String,
-  $plan: String,
   $parentCompanyId: String,
   $email: String,
   $ownerId: String,
@@ -12,7 +12,6 @@ const commonFields = `
   $lifecycleState: String,
   $businessType: String,
   $description: String,
-  $employees: Int,
   $doNotDisturb: String,
   $links: JSON
   $customFieldsData: JSON
@@ -20,10 +19,10 @@ const commonFields = `
 
 const commonVariables = `
   names: $names,
+  avatar: $avatar,
   primaryName: $primaryName,
   size: $size,
   industry: $industry,
-  plan: $plan,
   parentCompanyId: $parentCompanyId,
   email: $email,
   ownerId: $ownerId,
@@ -32,7 +31,6 @@ const commonVariables = `
   lifecycleState: $lifecycleState,
   businessType: $businessType,
   description: $description,
-  employees: $employees,
   doNotDisturb: $doNotDisturb,
   links: $links
   customFieldsData: $customFieldsData
@@ -49,6 +47,7 @@ const companiesAdd = `
 const companiesEdit = `
   mutation companiesEdit($_id: String!, ${commonFields}) {
     companiesEdit(_id: $_id, ${commonVariables}) {
+      avatar
       primaryName
       names
       size
@@ -62,7 +61,6 @@ const companiesEdit = `
       lifecycleState
       businessType
       description
-      employees
       doNotDisturb
       links {
         linkedIn

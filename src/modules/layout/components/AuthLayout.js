@@ -38,7 +38,7 @@ class AuthLayout extends React.Component {
             <Col md={6} mdOffset={3}>
               <AuthDescription>
                 <img src="/images/logo.png" alt="erxes" />
-                <h1>{__('Customer engagement. REDEFINED.')}</h1>
+                <h1>{__('Democratizing business')}</h1>
                 <p>
                   {__(
                     'erxes is an AI meets open source messaging platform for sales, marketing and support'

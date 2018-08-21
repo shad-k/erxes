@@ -30,7 +30,7 @@ export default `
   customerId
   customer {
     _id
-    getMessengerCustomData
+    visitorContactInfo
     messengerData
   }
   messageCount

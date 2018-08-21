@@ -1,5 +1,8 @@
 const companyFields = `
   _id
+  createdAt
+  modifiedAt
+  avatar
   primaryName
   names
   size
@@ -15,7 +18,6 @@ const companyFields = `
   lifecycleState
   businessType
   description
-  employees
   doNotDisturb
   links {
     linkedIn
@@ -26,11 +28,13 @@ const companyFields = `
     website
   }
   owner {
+    _id
     details {
       fullName
     }
   }
   parentCompany {
+    _id
     primaryName
   }
 
@@ -44,21 +48,31 @@ const companyFields = `
 `;
 
 const listParamsDef = `
-  $page: Int,
-  $perPage: Int,
-  $segment: String,
-  $tag: String,
-  $ids: [String],
+  $page: Int
+  $perPage: Int
+  $segment: String
+  $tag: String
+  $ids: [String]
   $searchValue: String
+  $leadStatus: String
+  $lifecycleState: String
+  $brand: String
+  $sortField: String
+  $sortDirection: Int
 `;
 
 const listParamsValue = `
-  page: $page,
-  perPage: $perPage,
-  segment: $segment,
-  tag: $tag,
-  ids: $ids,
+  page: $page
+  perPage: $perPage
+  segment: $segment
+  tag: $tag
+  ids: $ids
   searchValue: $searchValue
+  leadStatus: $leadStatus
+  lifecycleState: $lifecycleState
+  brand: $brand
+  sortField: $sortField
+  sortDirection: $sortDirection
 `;
 
 export const companies = `

@@ -38,6 +38,7 @@ const SidebarContainer = props => {
   // create or update action
   const save = ({ doc }, callback, channel) => {
     let mutation = addMutation;
+
     // if edit mode
     if (channel) {
       mutation = editMutation;
@@ -84,13 +85,15 @@ const commonOptions = ({ queryParams, currentChannelId }) => {
     refetchQueries: [
       {
         query: gql(queries.channels),
-        variables: { perPage: queryParams.limit || 20 },
-        fetchPolicy: 'network-only'
+        variables: { perPage: queryParams.limit || 20 }
+      },
+      {
+        query: gql(queries.channels),
+        variables: {}
       },
       {
         query: gql(queries.channelDetail),
-        variables: { _id: currentChannelId || '' },
-        fetchPolicy: 'network-only'
+        variables: { _id: currentChannelId || '' }
       },
       { query: gql(queries.channelsCount) },
       { query: gql(queries.users) }

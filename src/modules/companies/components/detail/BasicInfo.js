@@ -1,18 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Sidebar } from 'modules/layout/components';
-import { SidebarCounter, SidebarList } from 'modules/layout/styles';
-import { Icon, ModalTrigger } from 'modules/common/components';
-import { Links, InfoWrapper } from 'modules/common/styles/main';
-import { confirm } from 'modules/common/utils';
-import { CompanyForm } from '../../containers';
-import { CompanyLogo } from '../../styles';
-import { TargetMergeModal } from 'modules/customers/components';
-import { Action } from 'modules/customers/styles';
 import { Dropdown } from 'react-bootstrap';
-import { DropdownToggle, Button } from 'modules/common/components';
-import { searchCompany } from 'modules/common/utils';
-import { COMPANY_INFO } from 'modules/companies/constants';
+import { Sidebar } from 'modules/layout/components';
+import {
+  DropdownToggle,
+  Button,
+  NameCard,
+  Icon,
+  ModalTrigger
+} from 'modules/common/components';
+import { Links, InfoWrapper } from 'modules/common/styles/main';
+import { confirm, searchCompany } from 'modules/common/utils';
+import { TargetMerge } from 'modules/customers/components';
+import { SidebarCounter, SidebarList } from 'modules/layout/styles';
+import { AvatarWrapper } from 'modules/activityLogs/styles';
+import { Action } from 'modules/customers/styles';
+import { CompanyForm } from '../../containers';
+import { CompaniesMerge } from '../';
 
 const propTypes = {
   company: PropTypes.object.isRequired,
@@ -80,11 +84,18 @@ class BasicInfo extends React.Component {
           </DropdownToggle>
           <Dropdown.Menu>
             <li>
-              <TargetMergeModal
+              <TargetMerge
                 onSave={merge}
                 object={company}
                 searchObject={searchCompany}
-                basicInfos={COMPANY_INFO}
+                mergeForm={CompaniesMerge}
+                generateOptions={companies => {
+                  return companies.map((company, key) => ({
+                    key,
+                    value: JSON.stringify(company),
+                    label: company.primaryName || company.website || 'N/A'
+                  }));
+                }}
               />
             </li>
             <li>
@@ -105,7 +116,10 @@ class BasicInfo extends React.Component {
     return (
       <Sidebar.Section>
         <InfoWrapper>
-          <CompanyLogo />
+          <AvatarWrapper>
+            <NameCard.Avatar company={company} size={50} />
+          </AvatarWrapper>
+
           <div className="name">
             {company.primaryName}
             {this.renderLinks(links)}
@@ -124,7 +138,6 @@ class BasicInfo extends React.Component {
         <SidebarList className="no-link">
           {this.renderRow('Size', company.size)}
           {this.renderRow('Industry', company.industry)}
-          {this.renderRow('Plan', company.plan)}
           {this.renderRow(
             'Parent Company',
             company.parentCompany ? company.parentCompany.primaryName : '-'
@@ -139,7 +152,6 @@ class BasicInfo extends React.Component {
           {this.renderRow('Lifecycle State', company.lifecycleState)}
           {this.renderRow('Business Type', company.businessType)}
           {this.renderRow('Description', company.description)}
-          {this.renderRow('Employees count', company.employees)}
           {this.renderRow('Do not disturb', company.doNotDisturb)}
         </SidebarList>
       </Sidebar.Section>

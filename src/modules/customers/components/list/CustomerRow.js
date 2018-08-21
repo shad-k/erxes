@@ -8,6 +8,7 @@ const propTypes = {
   customer: PropTypes.object.isRequired,
   columnsConfig: PropTypes.array.isRequired,
   history: PropTypes.object.isRequired,
+  isChecked: PropTypes.bool,
   toggleBulk: PropTypes.func
 };
 
@@ -21,42 +22,51 @@ function isTimeStamp(value) {
   );
 }
 
-function getVisitorInfo(customer, key) {
-  const contactInfo = {
-    primaryEmail: 'email',
-    primaryPhone: 'phone'
-  };
-
-  if (
-    (key === 'primaryEmail' && !customer[key]) ||
-    (key === 'primaryPhone' && !customer[key])
-  ) {
-    return (
-      customer.visitorContactInfo &&
-      customer.visitorContactInfo[contactInfo[key]]
-    );
+function formatValue(value) {
+  if (!value) {
+    return '-';
   }
 
-  return _.get(customer, key);
-}
+  if (typeof value === 'string') {
+    return value;
+  }
 
-function formatValue(value) {
   if (typeof value === 'boolean') {
     return value ? 'Yes' : 'No';
   }
 
-  if (
-    value &&
-    (moment(value, moment.ISO_8601).isValid() || isTimeStamp(value))
-  ) {
+  if (moment(value, moment.ISO_8601).isValid() || isTimeStamp(value)) {
     return moment(value).fromNow();
   }
 
-  return value || '-';
+  return value;
 }
 
-function CustomerRow({ customer, columnsConfig, toggleBulk, history }) {
+function displayValue(customer, name) {
+  const value = _.get(customer, name);
+
+  if (name === 'visitorContactInfo') {
+    const visitorContactInfo = customer.visitorContactInfo;
+
+    if (visitorContactInfo) {
+      return formatValue(visitorContactInfo.email || visitorContactInfo.phone);
+    }
+
+    return '-';
+  }
+
+  return formatValue(value);
+}
+
+function CustomerRow({
+  customer,
+  columnsConfig,
+  toggleBulk,
+  isChecked,
+  history
+}) {
   const tags = customer.getTags;
+
   const onChange = e => {
     if (toggleBulk) {
       toggleBulk(customer, e.target.checked);
@@ -74,13 +84,17 @@ function CustomerRow({ customer, columnsConfig, toggleBulk, history }) {
       }}
     >
       <td onClick={onClick}>
-        <FormControl componentClass="checkbox" onChange={onChange} />
+        <FormControl
+          checked={isChecked}
+          componentClass="checkbox"
+          onChange={onChange}
+        />
       </td>
-      {columnsConfig.map(({ name }) => {
-        return (
-          <td key={name}>{formatValue(getVisitorInfo(customer, name))}</td>
-        );
-      })}
+
+      {columnsConfig.map(({ name }, index) => (
+        <td key={index}>{displayValue(customer, name)}</td>
+      ))}
+
       <td>
         <Tags tags={tags} limit={2} />
       </td>

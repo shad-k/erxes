@@ -25,10 +25,11 @@ class AutoAndManualForm extends FormBase {
     super(props);
 
     const message = props.message || {};
-    let content = message.messenger ? message.messenger.content : '';
-    content = message.email ? message.email.content : content;
     const messenger = message.messenger || {};
     const email = message.email || {};
+
+    let content = message.messenger ? message.messenger.content : '';
+    content = message.email ? message.email.content : content;
 
     this.state = {
       activeStep: 1,
@@ -45,7 +46,8 @@ class AutoAndManualForm extends FormBase {
       },
       email: {
         templateId: email.templateId || '',
-        subject: email.subject || ''
+        subject: email.subject || '',
+        attachments: email.attachments || []
       }
     };
   }
@@ -64,7 +66,8 @@ class AutoAndManualForm extends FormBase {
       doc.email = {
         templateId: this.state.email.templateId,
         subject: this.state.email.subject,
-        content: this.state.message
+        content: this.state.message,
+        attachments: this.state.email.attachments
       };
     } else if (this.state.method === 'messenger') {
       doc.messenger = {
