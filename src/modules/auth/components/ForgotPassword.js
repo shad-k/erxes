@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FormGroup, FormControl, InputGroup, Button } from 'react-bootstrap';
 import { Icon } from 'modules/common/components';
-import { AuthBox, Links } from '../styles';
+import { AuthBox } from '../styles';
 
 const propTypes = {
   forgotPassword: PropTypes.func.isRequired

@@ -358,6 +358,15 @@ const Authlayout = styled.div`
       color: #fff;
     }
   }
+
+  &:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent url('/images/twinkling.png') repeat top center;
+    animation: ${twinkling} 200s linear infinite;
+  }
 `;
 
 const AuthContent = styled.div`

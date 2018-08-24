@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FormGroup, FormControl, InputGroup, Button } from 'react-bootstrap';
 import { Icon } from 'modules/common/components';
-import { AuthBox, Links } from '../styles';
+import { AuthBox } from '../styles';
 
 const propTypes = {
   login: PropTypes.func.isRequired
@@ -51,7 +50,7 @@ class SignIn extends Component {
             <InputGroup>
               <InputGroup.Button>
                 <Button>
-                  <Icon icon="person" />
+                  <Icon icon="user" />
                 </Button>
               </InputGroup.Button>
               <FormControl
@@ -67,7 +66,7 @@ class SignIn extends Component {
             <InputGroup>
               <InputGroup.Button>
                 <Button>
-                  <Icon icon="android-lock" />
+                  <Icon icon="padlock-1" />
                 </Button>
               </InputGroup.Button>
               <FormControl

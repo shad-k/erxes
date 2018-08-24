@@ -37,7 +37,11 @@ class AuthLayout extends React.Component {
           <Grid>
             <Col md={6} mdOffset={3}>
               <AuthDescription>
-                <img src="/images/logo.png" alt="erxes" />
+                <img
+                  src="/images/logo.png"
+                  alt="erxes"
+                  style={{ height: '66px' }}
+                />
                 <h1>{__('Democratizing business')}</h1>
                 <p>
                   {__(

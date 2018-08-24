@@ -10,10 +10,7 @@ import {
   ModalTrigger
 } from 'modules/common/components';
 import { UserHelper } from '../styles';
-import {
-  ChangePassword,
-  NotificationSettings
-} from 'modules/settings/profile/containers';
+import { NotificationSettings } from 'modules/settings/profile/containers';
 import { Signature } from 'modules/settings/email/containers';
 
 const UserInfo = styled.div`
