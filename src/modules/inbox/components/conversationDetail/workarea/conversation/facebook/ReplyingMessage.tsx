@@ -34,7 +34,7 @@ class ReplyingMessage extends React.Component<Props, State> {
     this.getContent = this.getContent.bind(this);
   }
 
-  onContentChange(e: React.FormEvent<HTMLElement>) {
+  onContentChange(e) {
     const postContent = (e.target as HTMLInputElement).value;
 
     this.setState({

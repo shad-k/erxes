@@ -61,7 +61,7 @@ class SuccessStep extends React.Component<Props, State> {
             type="text"
             id="fromEmail"
             defaultValue={formData.fromEmail}
-            onChange={(e: React.FormEvent<HTMLElement>) =>
+            onChange={e =>
               this.onChangeFunction("fromEmail", (e.currentTarget as HTMLInputElement).value)
             }
           />
@@ -73,7 +73,7 @@ class SuccessStep extends React.Component<Props, State> {
             type="text"
             id="userEmailTitle"
             defaultValue={formData.userEmailTitle}
-            onChange={(e: React.FormEvent<HTMLElement>) =>
+            onChange={e =>
               this.onChangeFunction("userEmailTitle", (e.currentTarget as HTMLInputElement).value)
             }
           />
@@ -86,7 +86,7 @@ class SuccessStep extends React.Component<Props, State> {
             type="text"
             defaultValue={formData.userEmailContent}
             id="userEmailContent"
-            onChange={(e: React.FormEvent<HTMLElement>) =>
+            onChange={e =>
               this.onChangeFunction("userEmailContent", (e.currentTarget as HTMLInputElement).value)
             }
           />
@@ -98,7 +98,7 @@ class SuccessStep extends React.Component<Props, State> {
             id="adminEmails"
             type="text"
             defaultValue={formData.adminEmails ? formData.adminEmails.join(",") : []}
-            onChange={(e: React.FormEvent<HTMLElement>) =>
+            onChange={e =>
               this.onChangeFunction("adminEmails", (e.currentTarget as HTMLInputElement).value)
             }
           />
@@ -110,7 +110,7 @@ class SuccessStep extends React.Component<Props, State> {
             type="text"
             defaultValue={formData.adminEmailTitle}
             id="adminEmailTitle"
-            onChange={(e: React.FormEvent<HTMLElement>) =>
+            onChange={e =>
               this.onChangeFunction("adminEmailTitle", (e.currentTarget as HTMLInputElement).value)
             }
           />
@@ -123,7 +123,7 @@ class SuccessStep extends React.Component<Props, State> {
             type="text"
             defaultValue={formData.adminEmailContent}
             id="adminEmailContent"
-            onChange={(e: React.FormEvent<HTMLElement>) =>
+            onChange={e =>
               this.onChangeFunction("adminEmailContent", (e.currentTarget as HTMLInputElement).value)
             }
           />
@@ -143,7 +143,7 @@ class SuccessStep extends React.Component<Props, State> {
             type="text"
             defaultValue={formData.redirectUrl}
             id="redirectUrl"
-            onChange={(e: React.FormEvent<HTMLElement>) =>
+            onChange={e =>
               this.onChangeFunction("redirectUrl", (e.currentTarget as HTMLInputElement).value)
             }
           />
@@ -166,7 +166,7 @@ class SuccessStep extends React.Component<Props, State> {
           type="text"
           componentClass="textarea"
           defaultValue={thankContent}
-          onChange={(e: React.FormEvent<HTMLElement>) =>
+          onChange={e =>
             this.onChangeFunction("thankContent", (e.currentTarget as HTMLInputElement).value)
           }
         />

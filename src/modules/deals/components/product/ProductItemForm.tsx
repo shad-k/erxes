@@ -175,8 +175,8 @@ class ProductItemForm extends React.Component<Props> {
             min={1}
             placeholder="0"
             name="quantity"
-            onChange={(e: any) =>
-              this.onChangeField(e.target.name, e.target.value, productData._id)
+            onChange={e =>
+              this.onChangeField((e.target as HTMLInputElement).name, (e.target as HTMLInputElement).value, productData._id)
             }
           />
 
@@ -190,8 +190,8 @@ class ProductItemForm extends React.Component<Props> {
             type="number"
             placeholder="0"
             name="unitPrice"
-            onChange={(e: any) =>
-              this.onChangeField(e.target.name, e.target.value, productData._id)
+            onChange={e =>
+              this.onChangeField((e.target as HTMLInputElement).name, (e.target as HTMLInputElement).value, productData._id)
             }
           />
 
@@ -202,8 +202,8 @@ class ProductItemForm extends React.Component<Props> {
             max={100}
             placeholder="0"
             name="discountPercent"
-            onChange={(e: any) =>
-              this.onChangeField(e.target.name, e.target.value, productData._id)
+            onChange={e =>
+              this.onChangeField((e.target as HTMLInputElement).name, (e.target as HTMLInputElement).value, productData._id)
             }
           />
 
@@ -214,8 +214,8 @@ class ProductItemForm extends React.Component<Props> {
             max={100}
             placeholder="0"
             name="taxPercent"
-            onChange={(e: any) =>
-              this.onChangeField(e.target.name, e.target.value, productData._id)
+            onChange={e =>
+              this.onChangeField((e.target as HTMLInputElement).name, (e.target as HTMLInputElement).value, productData._id)
             }
           />
 
@@ -232,8 +232,8 @@ class ProductItemForm extends React.Component<Props> {
             type="number"
             placeholder="0"
             name="discount"
-            onChange={(e: any) =>
-              this.onChangeField(e.target.name, e.target.value, productData._id)
+            onChange={e =>
+              this.onChangeField((e.target as HTMLInputElement).name, (e.target as HTMLInputElement).value, productData._id)
             }
           />
 

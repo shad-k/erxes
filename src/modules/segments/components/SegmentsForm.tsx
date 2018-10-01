@@ -167,7 +167,7 @@ class SegmentsForm extends React.Component<Props, State> {
             <FormControl
               componentClass="select"
               value={connector}
-              onChange={(e) =>
+              onChange={e =>
                 this.handleChange("connector", (e.currentTarget as HTMLInputElement).value)
               }
             >
@@ -202,7 +202,7 @@ class SegmentsForm extends React.Component<Props, State> {
         <FormControl
           componentClass="select"
           value={this.state.subOf || ''}
-          onChange={(e) =>
+          onChange={e =>
             this.handleChange("subOf", (e.currentTarget as HTMLInputElement).value)
           }
         >

@@ -115,7 +115,7 @@ class ResponseTemplate extends React.Component<Props, State> {
     return onSelect && onSelect(responseTemplate);
   }
 
-  onFilter(e: React.FormEvent<HTMLElement>) {
+  onFilter(e) {
     const options = this.filterByBrand((e.target as HTMLInputElement).value);
     this.setState({ options, brandId: (e.target as HTMLInputElement).value });
   }
@@ -126,7 +126,7 @@ class ResponseTemplate extends React.Component<Props, State> {
     );
   }
 
-  filterItems(e: React.FormEvent<HTMLElement>) {
+  filterItems(e) {
     this.setState({ key: (e.target as HTMLInputElement).value });
   }
 

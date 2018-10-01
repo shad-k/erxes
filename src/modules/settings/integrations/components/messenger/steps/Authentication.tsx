@@ -20,7 +20,7 @@ type Props = {
   onlineHours?: IOnlineHour[];
 };
 
-class Availability extends React.Component<Props> {
+class Authentication extends React.Component<Props> {
   constructor(props: Props) {
     super(props);
 
@@ -101,7 +101,7 @@ class Availability extends React.Component<Props> {
               }}
               inline
             >
-              {__('Turn online/offline manually')}
+              {__('Not require')}
             </FormControl>
 
             <FormControl
@@ -114,7 +114,7 @@ class Availability extends React.Component<Props> {
               }}
               inline
             >
-              {__('Set to follow your schedule')}
+              {__('Require')}
             </FormControl>
           </FormGroup>
 
@@ -137,4 +137,4 @@ class Availability extends React.Component<Props> {
   }
 }
 
-export default Availability;
+export default Authentication;

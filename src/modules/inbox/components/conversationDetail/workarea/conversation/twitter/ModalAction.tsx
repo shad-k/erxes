@@ -72,7 +72,7 @@ class ModalAction extends React.Component<Props, State> {
     return maxChar - character.length;
   }
 
-  onTweetContentChange(e: React.FormEvent<HTMLElement>) {
+  onTweetContentChange(e) {
     const tweetContent = (e.target as HTMLInputElement).value;
     this.setState({
       tweet: tweetContent,

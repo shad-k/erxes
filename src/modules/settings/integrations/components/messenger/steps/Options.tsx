@@ -46,7 +46,7 @@ class Options extends React.Component<Props> {
               componentClass="select"
               id="languageCode"
               defaultValue={this.props.languageCode}
-              onChange={(e: React.FormEvent<HTMLElement>) => {
+              onChange={e => {
                 const target = e.currentTarget as HTMLInputElement;
                 return this.onChangeFunction('languageCode', target.value)
               }}

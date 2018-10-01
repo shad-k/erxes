@@ -159,7 +159,7 @@ class CallOut extends React.Component<Props, State> {
                 type="text"
                 value={this.props.calloutTitle}
                 disabled={skip}
-                onChange={(e: React.FormEvent<HTMLElement>) =>
+                onChange={e =>
                   this.onChangeFunction("calloutTitle", (e.currentTarget as HTMLInputElement).value)
                 }
               />

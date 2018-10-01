@@ -76,7 +76,7 @@ class OptionStep extends React.Component<Props, {}> {
               componentClass="select"
               defaultValue={brand ? brand._id : ''}
               id="selectBrand"
-              onChange={(e: React.FormEvent<HTMLElement>) =>
+              onChange={e =>
                 this.onChangeFunction("brand", (e.currentTarget as HTMLInputElement).value)
               }
             >
@@ -96,7 +96,7 @@ class OptionStep extends React.Component<Props, {}> {
               componentClass="select"
               defaultValue={language}
               id="languageCode"
-              onChange={(e: React.FormEvent<HTMLElement>) =>
+              onChange={e =>
                 this.onChangeFunction("language", (e.currentTarget as HTMLInputElement).value)
               }
             >

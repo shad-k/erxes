@@ -48,7 +48,7 @@ class ConversationItem extends React.Component<Props> {
     this.toggleCheckbox = this.toggleCheckbox.bind(this);
   }
 
-  toggleCheckbox(e: React.FormEvent<HTMLElement>) {
+  toggleCheckbox(e) {
     const { toggleCheckbox, conversation } = this.props;
 
     toggleCheckbox(conversation, (e.currentTarget as HTMLInputElement).checked);

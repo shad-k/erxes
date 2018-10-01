@@ -90,7 +90,7 @@ class Condition extends React.Component<Props, State> {
         componentClass="select"
         placeholder={__('select')}
         value={value}
-        onChange={(e) =>
+        onChange={e =>
           this.handleInputValue(name, (e.currentTarget as HTMLInputElement).value)
         }
       >
@@ -135,7 +135,7 @@ class Condition extends React.Component<Props, State> {
         componentClass="select"
         placeholder={__('select')}
         value={this.state.operator}
-        onChange={(e) =>
+        onChange={e =>
           this.handleInputValue('operator', (e.currentTarget as HTMLInputElement).value)
         }
       >
