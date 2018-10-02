@@ -12,7 +12,7 @@ import { MessengerPreview, Row } from 'modules/settings/integrations/styles';
 import { IIntegration, IMessengerData, IUiOptions } from 'modules/settings/integrations/types';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { Appearance, Authentication, Availability, Intro, Options } from './steps';
+import { Appearance, Authentication, Availability, Greeting, Intro, Options } from './steps';
 import CommonPreview from './widgetPreview/CommonPreview';
 
 type Props = {
@@ -197,7 +197,13 @@ class CreateMessenger extends React.Component<Props, State> {
             </Step>
 
             <Step img="/images/icons/erxes-09.svg" title="Greeting">
-              <div>hi2</div>
+              <Greeting
+                onChange={this.onChange}
+                isOnline={isOnline}
+                availabilityMethod={availabilityMethod}
+                timezone={timezone}
+                onlineHours={onlineHours}
+              />
             </Step>
 
             <Step img="/images/icons/erxes-16.svg" title="Intro">
